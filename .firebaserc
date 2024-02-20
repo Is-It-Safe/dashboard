@@ -1,0 +1,21 @@
+{
+  "projects": {
+    "default": "is-it-safe-29b67"
+  },
+  "targets": {
+    "is-it-safe-29b67": {
+      "hosting": {
+        "release": [
+          "isitsafe-dashboard-release"
+        ],
+        "test": [
+          "isitsafe-dashboard-test"
+        ],
+        "default": [
+          "isitsafe-dashboard"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

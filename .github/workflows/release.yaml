@@ -1,0 +1,40 @@
+name: Release CI/CD
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Setup Node.js and install dependencies
+      - name: Setup Node.js and Yarn
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
+          yarn-version: '1.x'
+          
+          
+      - name: Install Dependencies
+        run: yarn install
+        
+      # Build the app
+      - name: Build the app
+        run: yarn build
+        env:
+          VITE_API_URL: ${{ secrets.RELEASE_API_URL }}
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN}}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          projectId: is-it-safe-29b67
+          channelId: live
+          target: release
