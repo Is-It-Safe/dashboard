@@ -8,6 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "jest",
+    "test:cov": "jest --coverage",
     "lint": "tsc --noEmit && eslint src/**/*.ts{,x} --cache --max-warnings=0",
     "lint:fix": "eslint src/**/*.ts{,x} --fix"
   },
@@ -43,6 +44,7 @@
     "@typescript-eslint/parser": "^5.58.0",
     "@vitejs/plugin-react": "^3.1.0",
     "camelcase": "^7.0.1",
+    "dotenv": "^16.4.5",
     "eslint": "^8.38.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",

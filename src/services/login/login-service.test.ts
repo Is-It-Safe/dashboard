@@ -5,7 +5,7 @@ jest.mock('axios');
 
 describe('login', () => {
   const requestMock = axios.post as jest.MockedFunction<typeof axios.post>;
-  const baseUrl = import.meta.env.VITE_API_URL as string;
+  const baseUrl = process.env.VITE_API_URL as string;
 
   const mockResponse: LoginResponse = {
     refresh_token: 'mockRefreshToken',

@@ -33,7 +33,7 @@ describe('refreshToken', () => {
       {
         headers: {
           'Content-Type': 'application/json',
-          token: mockRefreshToken,
+          Authorization: `Bearer ${mockRefreshToken}`,
         },
       }
     );
@@ -52,7 +52,7 @@ describe('refreshToken', () => {
       {
         headers: {
           'Content-Type': 'application/json',
-          token: mockRefreshToken,
+          Authorization: `Bearer ${mockRefreshToken}`,
         },
       }
     );
