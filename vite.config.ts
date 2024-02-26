@@ -8,4 +8,9 @@ export default defineConfig({
   esbuild: {
     target: 'esnext',
   },
+  define: {
+    'process.env': {
+      VITE_API_URL: JSON.stringify(process.env.VITE_API_URL),
+    },
+  },
 });
