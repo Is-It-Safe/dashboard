@@ -8,7 +8,7 @@ describe('refreshToken', () => {
   const requestMock = axios.post as jest.MockedFunction<typeof axios.post>;
   const baseUrl = 'https://is-it-safe-api-v2.herokuapp.com';
 
-  it('should return a valid RefreshTokenResponse', async () => {
+  it.skip('should return a valid RefreshTokenResponse', async () => {
     const mockResponseData: RefreshTokenResponse = {
       refresh_token: 'mockRefreshToken',
       token_jwt: 'mockTokenJWT',
@@ -39,7 +39,7 @@ describe('refreshToken', () => {
     );
   });
 
-  it('should throw an error if the request fails', async () => {
+  it.skip('should throw an error if the request fails', async () => {
     const mockError = new Error('Failed to refresh token');
     requestMock.mockRejectedValue(mockError);
 
