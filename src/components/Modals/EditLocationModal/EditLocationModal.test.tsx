@@ -1,19 +1,15 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import {
-  render,
-  screen,
-  fireEvent,
-  findAllByTestId,
+    fireEvent,
+    render,
+    screen
 } from '@testing-library/react';
-import { EditLocationModal } from './EditLocationModal';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { AuthProvider } from '../../../context/auth/AuthProvider';
-import React from 'react';
-import * as ReactQuery from 'react-query';
-import { Input } from '../../Input/Input';
+import { EditLocationModal } from './EditLocationModal';
 
 jest.mock('../../../services/get-logged-user/get-logged-user-service');
-jest.mock('../../../utils/ baseUrl.ts', () => ({
+jest.mock('../../../utils/baseUrl.ts', () => ({
   someUrl: 'http://www.url.com',
 }));
 jest.mock('../../../services/refresh-token/refresh-token-service');

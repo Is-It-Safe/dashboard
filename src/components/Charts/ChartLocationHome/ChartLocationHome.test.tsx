@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import { ChartLocationHome } from './ChartLocationHome';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ChartLocationHome } from './ChartLocationHome';
 
 jest.mock('../../../assets/Icons/Righticons.svg', () => 'RightIcon');
 jest.mock('../../../assets/Icons/Lefticons.svg', () => 'LeftIcon');
-jest.mock('../../../utils/ baseUrl.ts', () => ({
+jest.mock('../../../utils/baseUrl.ts', () => ({
   someUrl: 'http://www.url.com',
 }));
 jest.mock('../../../services/location/location-service.ts');
