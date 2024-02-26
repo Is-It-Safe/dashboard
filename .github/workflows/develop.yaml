@@ -20,11 +20,14 @@ jobs:
         with:
           node-version: '18.x'
           yarn-version: '1.x'
-          
-          
+
       - name: Install Dependencies
         run: yarn install
-        
+
+      # Test the app with coverage
+      - name: Test the app
+        run: yarn test:cov
+
       # Build the app
       - name: Build the app
         run: yarn build
@@ -33,8 +36,8 @@ jobs:
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: "${{ secrets.GITHUB_TOKEN}}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          repoToken: '${{ secrets.GITHUB_TOKEN}}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
           projectId: is-it-safe-29b67
           channelId: live
           target: default
