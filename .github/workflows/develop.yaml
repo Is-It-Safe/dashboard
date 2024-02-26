@@ -27,6 +27,8 @@ jobs:
       # Test the app with coverage
       - name: Test the app
         run: yarn test:cov
+        env:
+          VITE_API_URL: ${{ secrets.DEV_API_URL }}
 
       # Build the app
       - name: Build the app
