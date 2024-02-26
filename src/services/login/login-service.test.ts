@@ -3,6 +3,10 @@ import { doLogin, LoginParams, LoginResponse } from './login-service';
 
 jest.mock('axios');
 
+jest.mock('../../utils/baseUrl', () => ({
+  baseUrl: process.env.VITE_API_URL,
+}));
+
 describe('login', () => {
   const requestMock = axios.post as jest.MockedFunction<typeof axios.post>;
   const baseUrl = process.env.VITE_API_URL as string;

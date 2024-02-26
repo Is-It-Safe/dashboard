@@ -3,6 +3,10 @@ import { getRefreshToken, RefreshTokenResponse } from './refresh-token-service';
 
 jest.mock('axios');
 
+jest.mock('../../utils/baseUrl', () => ({
+  baseUrl: process.env.VITE_API_URL,
+}));
+
 describe('refreshToken', () => {
   const mockRefreshToken = 'mockRefreshToken';
   const requestMock = axios.post as jest.MockedFunction<typeof axios.post>;

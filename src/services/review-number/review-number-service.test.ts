@@ -3,6 +3,10 @@ import { reviewNumberRequest } from './review-number-service';
 
 jest.mock('axios'); // Mock axios module
 
+jest.mock('../../utils/baseUrl', () => ({
+  baseUrl: process.env.VITE_API_URL,
+}));
+
 describe('reviewNumberRequest', () => {
   const mockToken = 'mockToken';
   const mockReviews = 5;

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Login } from './Login';
 
@@ -8,6 +8,10 @@ jest.mock('../../assets/Icons/Visibilityicons.svg', () => ({
 }));
 jest.mock('../../assets/Icons/Blindicons.svg', () => ({
   ReactComponent: () => <div data-testid="blind-icon" />,
+}));
+
+jest.mock('../../utils/baseUrl', () => ({
+  baseUrl: process.env.VITE_API_URL,
 }));
 
 describe('Login', () => {
