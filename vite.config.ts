@@ -8,6 +8,5 @@ export default defineConfig({
   plugins: [react(), svgr(), EnvironmentPlugin('all')],
   esbuild: {
     target: 'esnext',
-    module: 'esnext',
   },
 });
