@@ -1,7 +1,9 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
 import { reviewNumberRequest } from './review-number-service';
 
 jest.mock('axios'); // Mock axios module
+dotenv.config();
 
 jest.mock('../../utils/baseUrl', () => ({
   baseUrl: process.env.VITE_API_URL,

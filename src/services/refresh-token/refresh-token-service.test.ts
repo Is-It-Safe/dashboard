@@ -1,7 +1,9 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
 import { getRefreshToken, RefreshTokenResponse } from './refresh-token-service';
 
 jest.mock('axios');
+dotenv.config();
 
 jest.mock('../../utils/baseUrl', () => ({
   baseUrl: process.env.VITE_API_URL,
