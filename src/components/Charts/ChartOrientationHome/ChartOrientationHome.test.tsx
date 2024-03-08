@@ -1,8 +1,7 @@
-import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { ChartOrientationHome } from './ChartOrientationHome';
 
-jest.mock('../../../utils/ baseUrl.ts', () => ({
+jest.mock('../../../utils/baseUrl.ts', () => ({
   someUrl: 'http://www.url.com',
 }));
 

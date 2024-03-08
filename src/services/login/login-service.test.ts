@@ -1,11 +1,18 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
 import { doLogin, LoginParams, LoginResponse } from './login-service';
 
 jest.mock('axios');
 
+dotenv.config();
+
+jest.mock('../../utils/baseUrl', () => ({
+  baseUrl: process.env.VITE_API_URL,
+}));
+
 describe('login', () => {
   const requestMock = axios.post as jest.MockedFunction<typeof axios.post>;
-  const baseUrl = import.meta.env.VITE_API_URL as string;
+  const baseUrl = process.env.VITE_API_URL as string;
 
   const mockResponse: LoginResponse = {
     refresh_token: 'mockRefreshToken',

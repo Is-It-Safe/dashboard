@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { baseUrl } from '../../utils/ baseUrl';
+import { baseUrl } from '../../utils/baseUrl';
 
 export interface LoginResponse {
   refresh_token: string;

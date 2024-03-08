@@ -15,6 +15,8 @@ interface Props {
   setSelectedId: React.Dispatch<React.SetStateAction<number>>;
   locationList: UseQueryResult<ILocationListResponse, unknown>;
   searchTerm: string;
+  pendingValidationFilter: boolean;
+  isFilteringByPendingValidation: boolean;
 }
 const LocationList: React.FC<Props> = ({
   setSelectedId,
@@ -23,18 +25,25 @@ const LocationList: React.FC<Props> = ({
   setShowShowModal,
   locationList,
   searchTerm,
+  pendingValidationFilter,
+  isFilteringByPendingValidation,
 }) => {
   const [selectedLetter, setSelectedLetter] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(12);
 
-  const filteredLocations = locationList.data?.content?.filter(
+  let filteredLocations = locationList.data?.content?.filter(
     (location) =>
       (selectedLetter === '' ||
         location.name.toLowerCase().startsWith(selectedLetter.toLowerCase())) &&
       (searchTerm === '' ||
         location.name.toLowerCase().includes(searchTerm.toLowerCase()))
   );
+
+  if (isFilteringByPendingValidation)
+    filteredLocations = filteredLocations?.filter(
+      (location) => location.pendingValidation === pendingValidationFilter
+    );
 
   const totalPages = Math.ceil((filteredLocations?.length || 0) / itemsPerPage);
   filteredLocations?.sort((a, b) => a.name.localeCompare(b.name));

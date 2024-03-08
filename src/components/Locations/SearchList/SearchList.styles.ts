@@ -65,6 +65,7 @@ export const DropdownContainer = styled.div`
   margin-right: 12px;
 `;
 export const DropdownButton = styled.button`
+  padding: 8px;
   background-color: #fff;
   color: #000;
   font-size: 12px;
@@ -90,7 +91,6 @@ export const DowniconsContainer = styled.svg<DowniconProps>`
   width: 24px;
   height: 24px;
   transition: transform 0.3s;
-  margin-inline: 10px;
 
   transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
 `;
@@ -120,13 +120,21 @@ export const DropdownMenu = styled.div`
 `;
 
 export const DropdownButtonItem = styled.button`
-  font-size: 14px;
+  font-family: Poppins;
+  font-size: 12px;
   border: 0;
   background: #fff;
   width: 100%;
   text-align: left;
+  padding: 10px;
 
   &:hover {
     background-color: #efecfd;
   }
+`;
+
+export const CloseiconsContainer = styled.svg`
+  width: 20px;
+  height: 18px;
+  color: var(--neutros-900, #190a33);
 `;

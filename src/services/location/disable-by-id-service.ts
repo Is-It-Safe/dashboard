@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import axios, { AxiosError } from 'axios';
-import { baseUrl } from '../../utils/ baseUrl';
+import { baseUrl } from '../../utils/baseUrl';
 
 export const disableLocationById = async (
   token: string | null,
