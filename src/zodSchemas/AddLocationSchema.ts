@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { validaCep } from '../services/cep/cep-validation-service';
 
 export const addLocationFormSchema = z.object({
-  name: z.string().min(5, 'Campo obrigatório').max(100),
+  name: z.string().min(5, 'Campo obrigatório').max(100, 'Nome deve ser menor que 100 caracteres. Por favor, insira um nome mais curto.'),
   type: z
     .string()
     .min(1, { message: 'Campo obrigatório' })
