@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { ImageContainer, ModalImageContainer } from './ModalImg.style';
 import { ReactComponent as CloseIcon } from './../../../assets/Icons/Closeicons.svg';
+import { ReactComponent as ExclamationMark } from './../../../assets/Icons/ExclamationMark.svg';
 import { ErrorMessage } from '../../Input/Input.style';
 
 interface ModalImgProps {
@@ -92,6 +93,12 @@ const ModalImg: React.FC<ModalImgProps> = ({ src, onFileChange }) => {
       </ImageContainer>
       {inputErrorMessage && (
         <ErrorMessage data-testid="input-error">
+          <ExclamationMark
+            style={{
+              borderRadius: '22.5px',
+              backgroundColor: '#FFE3E0',
+              marginRight: '7px'
+            }} />
           {inputErrorMessage}
         </ErrorMessage>
       )}

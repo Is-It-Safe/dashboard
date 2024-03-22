@@ -65,8 +65,13 @@ export const LabelInput = styled.label<IInput>`
 `;
 
 export const ErrorMessage = styled.span`
-  color: #eb3d3d;
-  font-size: 12;
-  font-weight: '400';
+  color: #F36050;
+  font-family: Poppins;
+  font-size: 8px;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: left;
+  display: flex;
+  align-items: center;
   max-width: 100%;
 `;
