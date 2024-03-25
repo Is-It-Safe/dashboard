@@ -1,57 +1,49 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Modal } from './Modal';
 
+afterEach(() => {
+  jest.resetAllMocks();
+});
+
+const mockHeaderText = 'Modal Header';
+const mockContentText = 'Modal Content';
+
 describe('Modal component', () => {
-  it('renders the modal content correctly when showModal is true', () => {
-    const headerText = 'Modal Header';
-    const contentText = 'Modal Content';
-    const setShowModalMock = jest.fn();
-    const { getByText } = render(
-      <Modal
-        header={headerText}
-        showModal={true}
-        setShowModal={setShowModalMock}
-      >
-        {contentText}
+  it('should render the modal content correctly when showModal is true', () => {
+    const { getByText, queryByTestId } = render(
+      <Modal header={mockHeaderText} showModal={true}>
+        {mockContentText}
       </Modal>
     );
 
-    expect(getByText(headerText)).toBeInTheDocument();
-    expect(getByText(contentText)).toBeInTheDocument();
+    expect(getByText(mockHeaderText)).toBeInTheDocument();
+    expect(getByText(mockContentText)).toBeInTheDocument();
+    expect(queryByTestId('modal-container')).toBeInTheDocument();
   });
 
-  it('does not render the modal content when showModal is false', async () => {
-    const headerText = 'Modal Header';
-    const contentText = 'Modal Content';
-    const setShowModalMock = jest.fn();
-    const { findByTestId } = render(
-      <Modal
-        header={headerText}
-        showModal={false}
-        setShowModal={setShowModalMock}
-      >
-        {contentText}
+  it('should not render the modal content when showModal is false', () => {
+    const { queryByText, queryByTestId } = render(
+      <Modal header={mockHeaderText} showModal={false}>
+        {mockContentText}
       </Modal>
     );
 
-    const modal = await findByTestId('modal-container');
-
-    expect(modal).toHaveStyle({
-      display: 'none',
-    });
+    expect(queryByText(mockHeaderText)).not.toBeInTheDocument();
+    expect(queryByText(mockContentText)).not.toBeInTheDocument();
+    expect(queryByTestId('modal-container')).not.toBeInTheDocument();
   });
 
-  it('calls setShowModal with false when close icon is clicked', async () => {
-    const setShowModalMock = jest.fn();
-    const { findByTestId } = render(
-      <Modal showModal={true} setShowModal={setShowModalMock}>
-        test
+  it('should verify if the modal is accessible', () => {
+    const { getByTestId, getByRole } = render(
+      <Modal header={mockHeaderText} showModal={true}>
+        {mockContentText}
       </Modal>
     );
+    const modal = getByTestId('modal-container');
+    const dialogRole = getByRole('dialog');
 
-    const closeIcon = await findByTestId('close-modal');
-    fireEvent.click(closeIcon);
-
-    expect(setShowModalMock).toHaveBeenCalledWith(false);
+    expect(modal).toHaveAttribute('aria-modal', 'true');
+    expect(modal).toHaveAttribute('role', 'dialog');
+    expect(dialogRole).toBeInTheDocument();
   });
 });

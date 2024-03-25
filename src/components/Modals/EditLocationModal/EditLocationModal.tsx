@@ -1,46 +1,46 @@
-import { Controller, useForm, FieldError, set } from 'react-hook-form';
-import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { editLocationFormSchema } from '../../../zodSchemas/EditLocationSchema';
-import { ReactComponent as CloseIcon } from '../../../assets/Icons/Closeicons.svg';
-import ModalImg from '../ModalImg/ModalImg';
-import { Button } from '../../Button/Button';
-import { Input } from '../../Input/Input';
-import { Form } from '../../Form/Form';
-import { Frame } from '../../../layout';
-import { Modal } from '../Modal/Modal';
-import { Option, SelectComponent } from '../../Select/Select';
-import {
-  LabelTextBox,
-  Title,
-  TitleContainer,
-} from './EditLocationModal.styles';
-import { ConfirmationModal } from '../ConfirmationModal/ConfirmationModal';
-import { useAuth } from '../../../context/auth/AuthProvider';
-import {
-  getLocationById,
-  Location,
-} from '../../../services/location/location-by-id-service';
+import { useState } from 'react';
+import { Controller, FieldError, useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
-import { updateLocation } from '../../../services/location/update-location-service';
+import { ReactComponent as CloseIcon } from '../../../assets/Icons/Closeicons.svg';
+import { useAuth } from '../../../context/auth/AuthProvider';
+import { Frame } from '../../../layout';
 import { translateCep } from '../../../services/cep/cep-translation-service';
+import {
+  Location,
+  getLocationById,
+} from '../../../services/location/location-by-id-service';
+import { updateLocation } from '../../../services/location/update-location-service';
+import { editLocationFormSchema } from '../../../zodSchemas/EditLocationSchema';
+import { Button } from '../../Button/Button';
+import { Form } from '../../Form/Form';
+import { Input } from '../../Input/Input';
+import { Option, SelectComponent } from '../../Select/Select';
+import { ConfirmationModal } from '../ConfirmationModal/ConfirmationModal';
+import { Modal } from '../Modal/Modal';
+import ModalImg from '../ModalImg/ModalImg';
 import { Id } from '../ShowLocationModal/ShowLocationModal.styles';
 import {
   LocationStatusIcon,
   LocationStatusText,
 } from './../../Locations/LocationListItem/LocationListItem.styles';
+import {
+  LabelTextBox,
+  Title,
+  TitleContainer,
+} from './EditLocationModal.styles';
 
 type IEditLocationModal = {
+  id: number;
   showmodal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-  id: number | undefined;
   listRefetch: () => void;
 };
 
 const EditLocationModal = ({
+  id,
   showmodal,
   setShowModal,
-  id,
   listRefetch,
 }: IEditLocationModal) => {
   const { accessToken } = useAuth();
@@ -62,7 +62,7 @@ const EditLocationModal = ({
       },
     }
   );
-  const src = locationQuery.data?.imgUrl || '';
+  const src = locationQuery.data?.imgUrl ?? '';
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [typeNumber, setTypeNumber] = useState<string>('');
@@ -184,11 +184,9 @@ const EditLocationModal = ({
         </>
       }
       showModal={showmodal}
-      setShowModal={setShowModal}
     >
       <ConfirmationModal
         hasError={hasError}
-        setShowModal={setShowSubmitModal}
         showmodal={showSubmitModal}
       ></ConfirmationModal>
       <Frame

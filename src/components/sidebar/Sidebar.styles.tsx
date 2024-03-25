@@ -8,7 +8,7 @@ interface Props {
 
 export const SidebarContainer = styled.div<Pick<Props, 'isSidebarExpanded'>>`
   width: ${(props) => (props.isSidebarExpanded ? '20.6vw' : '5.3vw')};
-  height: 100%;
+  min-height: 100vh;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     linear-gradient(264.3deg, #381766 3.22%, #1f1045 43.38%, #494392 89.8%);
   margin-top: 0;

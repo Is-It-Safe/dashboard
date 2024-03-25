@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { baseUrl } from '../../utils/ baseUrl';
+import { baseUrl } from '../../utils/baseUrl';
 
 export const saveLocation = async (token: string | null, data: FormData) => {
   const response = await axios

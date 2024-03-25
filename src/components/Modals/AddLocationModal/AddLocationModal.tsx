@@ -125,13 +125,8 @@ const AddLocationModal = ({
         </>
       }
       showModal={showmodal}
-      setShowModal={setShowModal}
     >
-      <ConfirmationModal
-        hasError={hasError}
-        setShowModal={setShowSubmitModal}
-        showmodal={showSubmitModal}
-      />
+      <ConfirmationModal hasError={hasError} showmodal={showSubmitModal} />
       <Form handleSubmit={handleSubmit} onSubmit={(data) => onSubmit(data)}>
         <Frame direction="column" gap={'16px'} style={{ width: '100%' }}>
           <Input
@@ -177,7 +172,7 @@ const AddLocationModal = ({
           <Input
             label="Endereço"
             {...register('endereco', {})}
-            data-testid="input-endereco"
+            data-testid="input-address"
             error={errors.endereco}
           />
           <Frame data-testid="img" direction="row" gap={'0px'}>

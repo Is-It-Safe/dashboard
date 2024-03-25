@@ -59,7 +59,7 @@ const DeleteLocationModal = ({
     return <div></div>;
   }
   return (
-    <Modal showModal={showmodal} setShowModal={setShowModal}>
+    <Modal showModal={showmodal}>
       {(locationQuery.data?.totalReviews as number) > 0 ? (
         <Frame direction="column" gap={'10px'}>
           <Title>Desativar Local</Title>

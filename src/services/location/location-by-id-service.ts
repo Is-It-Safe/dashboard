@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { baseUrl } from '../../utils/ baseUrl';
+import { baseUrl } from '../../utils/baseUrl';
 export type Location = {
   id: number;
   name: string;

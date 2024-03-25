@@ -121,7 +121,6 @@ const ShowLocationModal = ({
         </Frame>
       }
       showModal={showmodal}
-      setShowModal={setShowModal}
     >
       <Frame direction="column" gap={'16px'}>
         <Frame direction="row" gap={'18px'}>

@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { ChartGenderHome } from './ChartGenderHome';
 
 jest.mock('../../../services/user/user-service');
-jest.mock('../../../utils/ baseUrl.ts', () => ({
+jest.mock('../../../utils/baseUrl.ts', () => ({
   someUrl: 'http://www.url.com',
 }));
 
